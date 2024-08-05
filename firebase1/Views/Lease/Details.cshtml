@@ -1,0 +1,108 @@
+﻿@model firebase1.Models.LeaseAgreement
+
+@{
+    ViewBag.Title = "Details";
+}
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<h2>Lease Agreement Details</h2>
+
+
+<body style="background-color: #6EAC80;">
+
+    <div>
+        @*<h4>LeaseAgreement</h4>*@
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.StudentNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StudentNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StudentID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StudentID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LandLord)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LandLord)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LandlordId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LandlordId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Accomodation)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Accomodation)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Message)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
+            </dd>
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.ResponseMessage)
+            </dt>*@
+
+            @*<dd>
+                @Html.TextAreaFor(model => model.ResponseMessage, new { htmlAttributes = new { @class = "form-control summernote" } })
+            </dd>*@
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Respond", "Edit", new { id = Model.LeaseAgreementId }) |
+        @Html.ActionLink("Back to List Leases", "Index")
+    </p>
+
+
+
+
+
+</body>
+
+
+    @section Scripts {
+
+        @*@summernote*@
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.summernote').summernote({
+
+                });
+            });
+        </script>
+
+        @Scripts.Render("~/bundles/jqueryval")
+    }

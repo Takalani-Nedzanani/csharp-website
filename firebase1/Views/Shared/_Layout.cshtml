@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("EduConnect", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+
+                    @*<div class="back">*@
+
+
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+
+
+
+                    @*<li>@Html.ActionLink("Lease", "Create", "Lease", new { area = "" }, new { @class = "nav-link" })</li>*@
+
+                    @*user details user accessrights*@
+
+
+
+                  
+
+
+
+
+                    @if (@HttpContext.Current.Session["AccessRight"] != null)
+                    {
+                        if (@HttpContext.Current.Session["AccessRight"].ToString() == "User")
+                        {
+                            <li>
+                            <li>@Html.ActionLink("Comments", "Create", "Comment", new { area = "" }, new { @class = "nav-link" })</li>
+                            </li>
+                        }
+                    }
+
+                    @if (@HttpContext.Current.Session["AccessRight"] != null)
+                    {
+                        if (@HttpContext.Current.Session["AccessRight"].ToString() == "User")
+                        {
+                            <li>
+                            <li>@Html.ActionLink("Lease", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                            </li>
+                        }
+                    }
+
+                    @if (@HttpContext.Current.Session["AccessRight"] != null)
+                    {
+                        if (@HttpContext.Current.Session["AccessRight"].ToString() == "User")
+                        {
+                            <li>
+                            <li>@Html.ActionLink("Communiques", "Index", "Communiques", new { area = "" }, new { @class = "nav-link" })</li>
+                            </li>
+                        }
+                    }
+
+
+                    @if (@HttpContext.Current.Session["AccessRight"] != null)
+                    {
+                        if (@HttpContext.Current.Session["AccessRight"].ToString() == "User")
+                        {
+                            <li>
+                            <li>@Html.ActionLink("Bursaries", "Index", "Bursary", new { area = "" }, new { @class = "nav-link" })</li>
+                            </li>
+                        }
+                    }
+
+                    @if (@HttpContext.Current.Session["AccessRight"] != null)
+                    {
+                        if (@HttpContext.Current.Session["AccessRight"].ToString() == "User")
+                        {
+                            <li>
+                            <li>@Html.ActionLink("Job Sites", "Index", "JobSites", new { area = "" }, new { @class = "nav-link" })</li>
+                            </li>
+                        }
+                    }
+
+
+
+
+
+
+                    @*Admin details user accessright*@
+
+                    @if (@HttpContext.Current.Session["AccessRight"] != null)
+                    {
+                        if (@HttpContext.Current.Session["AccessRight"].ToString() == "Admin")
+                        {
+                            <li>
+                            <li>@Html.ActionLink("Comments", "Index", "Comment", new { area = "" }, new { @class = "nav-link" })</li>
+                            </li>
+                        }
+                    }
+
+                    @if (@HttpContext.Current.Session["AccessRight"] != null)
+                    {
+                        if (@HttpContext.Current.Session["AccessRight"].ToString() == "Admin")
+                        {
+                            <li>
+                            <li>@Html.ActionLink("Lease", "Index", "Lease", new { area = "" }, new { @class = "nav-link" })</li>
+                            </li>
+                        }
+
+                    }
+
+                    @if (@HttpContext.Current.Session["AccessRight"] != null)
+                    {
+                        if (@HttpContext.Current.Session["AccessRight"].ToString() == "Admin")
+                        {
+                            <li>
+                            <li>@Html.ActionLink("Communiques", "Create", "Communiques", new { area = "" }, new { @class = "nav-link" })</li>
+                            </li>
+                        }
+                    }
+
+
+                    @if (@HttpContext.Current.Session["AccessRight"] != null)
+                    {
+                        if (@HttpContext.Current.Session["AccessRight"].ToString() == "Admin")
+                        {
+                            <li>
+                            <li>@Html.ActionLink("Bursaries", "Create", "Bursary", new { area = "" }, new { @class = "nav-link" })</li>
+                            </li>
+                        }
+                    }
+
+
+
+
+
+                    @if (@HttpContext.Current.Session["AccessRight"] != null)
+                    {
+                        if (@HttpContext.Current.Session["AccessRight"].ToString() == "Admin")
+                        {
+                            <li>
+                            <li>@Html.ActionLink("JobSites", "Create", "JobSites", new { area = "" }, new { @class = "nav-link" })</li>
+                            </li>
+                        }
+                    }
+
+
+
+
+
+                    @if (@HttpContext.Current.Session["Email"] == null)
+                    {
+                        <li>@Html.ActionLink("SignUp", "SignUp", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Login", "Login", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                    else
+                        if (@HttpContext.Current.Session["Email"] != null)
+                    {
+                        <li>@Html.ActionLink(HttpContext.Current.Session["email"].ToString() + "Log Out", "LogOff", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr style="color:black;" />
+        <footer>
+            <p style="color:black;">&copy; @DateTime.Now.Year - EduConnect</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿@model IEnumerable<firebase1.Models.LeaseAgreement>
+
+@{
+    ViewBag.Title = "Lease";
+}
+
+<style>
+    .lease {
+        color: black;
+        text-align: center;
+    }
+
+    .back{
+        text-align:center;
+    }
+
+
+
+</style>
+
+
+
+
+<body style="background-color: #6EAC80;">
+
+    <div class="lease">
+        <h2><u>Lease Agreement for response</u></h2>
+        </div>
+        <!-- include summernote css/js -->
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
+    <br />
+        @*<p>
+                @Html.ActionLink("Create New", "Create")
+            </p>*@
+        <table class="table" style="border-color:black;">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LandLord)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LandlordId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Accomodation)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Message)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ResponseMessage)
+                    </th>
+                    <th></th>*@
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LandLord)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LandlordId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Accomodation)
+                    </td>
+                    @*<td>
+                            @Html.TextAreaFor(modelItem => item.Message, new { htmlAttributes = new { @class = "form-control summernote" } })
+                        </td>*@
+                    @*<td>
+                            @Html.TextAreaFor(modelItem => item.ResponseMessage, new { htmlAttributes = new { @class = "form-control summernote" } })
+                        </td>*@
+                    <td>
+                        @*@Html.ActionLink("Response", "Edit", new { id = item.LeaseAgreementId }) |*@
+                        @Html.ActionLink("Details", "Details", new { id = item.LeaseAgreementId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.LeaseAgreementId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <div class="back">
+            <button type="button" class="btn btn-success btn-lg btn-block"> @Html.ActionLink("Back", "Index", "Home", new { area = "" }, new { @class = "nav-link" }) </button>
+        </div>
+
+</body>
+
+
+@section Scripts {
+
+    @*@summernote*@
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.summernote').summernote({
+
+            });
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+}

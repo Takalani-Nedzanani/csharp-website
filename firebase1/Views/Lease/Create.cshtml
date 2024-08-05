@@ -1,0 +1,169 @@
+﻿@model firebase1.Models.LeaseAgreement
+
+@{
+    ViewBag.Title = "Lease";
+}
+
+
+<style>
+    .sectionCenter {
+        margin: auto;
+        width: 50%;
+        padding: 50px;
+        /* text-align: left;*/
+    }
+    .headings{
+        color:black;
+        text-align:left;
+    }
+    .submit{
+        text-align:center;
+    }
+
+    .all{
+        text-align:center;
+    }
+
+    
+    
+</style>
+
+
+
+
+
+
+<body style="background-color: #6EAC80;">
+    <section class="sectionCenter">
+
+        @*<h2>Create</h2>*@
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                 
+                
+
+                    <div class="headings">
+                        <h4>Student Details</h4>
+                    </div>
+
+
+                    <hr style="color:white;" />
+                   <br />
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.StudentNumber, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.StudentNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Student Number" } })
+                                @Html.ValidationMessageFor(model => model.StudentNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Email" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.StudentID, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.StudentID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Id" } })
+                                @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    
+
+                    <br />
+                    <br />
+
+                    <div class="headings">
+                        <h4>LandLord Details</h4>
+                    </div>
+                    <hr style="color:white;" />
+                    <br />
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.LandLord, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LandLord, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Landlords/Agency Name" } })
+                            @Html.ValidationMessageFor(model => model.LandLord, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.LandlordId, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LandlordId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Landlords/Agency Id" } })
+                            @Html.ValidationMessageFor(model => model.LandlordId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Accomodation, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Accomodation, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Accommodation Name" } })
+                            @Html.ValidationMessageFor(model => model.Accomodation, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group" >
+            @*@Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Landlord Number" } } )
+                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+                    @*<div class="form-group" hidden>
+            @Html.LabelFor(model => model.ResponseMessage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ResponseMessage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ResponseMessage, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+                    <br />
+
+                    <input type="file">
+
+
+                    <br />
+                    <br />
+                    <div class="submit">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Submit" @*class="btn btn-default"*@ @*class="btn btn-dark"*@ class="btn @*btn-primary*@  btn-success btn-lg btn-block" />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                
+
+            </div>
+
+
+        }
+
+
+    </section>
+
+    </body>
+
+
+    @*<div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
+

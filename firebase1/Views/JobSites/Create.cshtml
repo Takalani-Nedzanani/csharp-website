@@ -1,0 +1,164 @@
+﻿@model firebase1.Models.JobSite
+
+@{
+    ViewBag.Title = "JobSite";
+}
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
+<style>
+    .sectionCenter {
+        margin: auto;
+        width: 50%;
+        padding: 50px;
+        /* text-align: left;*/
+    }
+
+    .wrappers {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .images {
+        flex: 0 0 30%;
+        margin-right: 15px;
+    }
+
+
+    .backbuttons {
+        display: inline-flex;
+        flex-direction: row;
+    }
+
+    .back {
+        margin-right: 300px;
+    }
+
+    .bur {
+        color: black;
+        text-align: center;
+    }
+
+</style>
+
+
+
+
+
+<body style="background-color: #6EAC80;">
+
+    <section class="sectionCenter">
+
+
+        <div class="bur">
+            <h2>Add a new JobSite</h2>
+        </div>
+        <hr style="color:black" />
+
+
+
+        <div class="wrappers">
+            <div class="images">
+                <img src="~/images/add new file (communiques_web).jpg" alt="staff" width="300" height="300" border="1">
+            </div>
+            <div class="texts">
+
+
+
+
+                
+
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <hr style="color:black" />
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Message,new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group" hidden>
+                    @Html.LabelFor(model => model.ResponseMessage, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.ResponseMessage, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ResponseMessage, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+                <br />
+
+
+
+                <div class="backbuttons">
+                    <div class="back">
+                        <div class="form-group">
+                            @*<div class="col-md-offset-2 col-md-10">*@
+                            <button type="button" class="btn btn-success btn-lg btn-block"> @Html.ActionLink("Back", "Index", "Home", new { area = "" }, new { @class = "nav-link" }) </button>
+                            @*</div>*@
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*<div class="col-md-offset-2 col-md-10">*@
+                        <input type="submit" value="Submit"  @*class="btn btn-default"*@ @*class="btn btn-dark"*@ class="btn @*btn-primary*@  btn-success btn-lg btn-block"@*class="btn btn-default"*@ />
+                        @*</div>*@
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+                }
+
+
+            </div>
+        </div>
+
+    </section>
+
+    </body>
+
+
+    @section Scripts {
+
+        @*@summernote*@
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.summernote').summernote({
+
+                });
+            });
+        </script>
+
+        @Scripts.Render("~/bundles/jqueryval")
+    }

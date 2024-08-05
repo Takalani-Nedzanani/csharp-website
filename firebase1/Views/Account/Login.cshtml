@@ -1,0 +1,131 @@
+﻿@model firebase1.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<style>
+    .sectionCenter {
+        margin: auto;
+        width: 50%;
+        padding: 50px;
+        /* text-align: left;*/
+    }
+    .login {
+        color: black;
+        margin-left: 20px;
+        
+    }
+    .password {
+        color: white;
+    }
+   
+    .forgot{
+        text-align:left;
+        color:white;
+    }
+
+    .around {
+        display: flex;
+        flex-direction: row;
+        align-content: center
+    }
+    .loginss {
+        flex: 0 0 20%;
+        margin-right: 5px;
+    }
+
+</style>
+
+<body style="background-color: #6EAC80;">
+
+    <section class="sectionCenter">
+
+        <div class=" login">
+            <h2 align="Center">Login</h2>
+        </div>
+        <br />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" >
+
+        <hr style="color:black;" />
+        
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*@Html.HiddenFor(model => model.Id)*@
+
+        <div class="password">
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <div class="password">
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password"  } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.IsAdmin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsAdmin)
+                    @Html.ValidationMessageFor(model => model.IsAdmin, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+
+        <div class="forgot">
+            <div>
+                @Html.ActionLink("Forgot your password?", "ForgotPassword", "Account")
+            </div>
+        </div>
+        <br />
+
+
+        <div class="around">
+
+            <div class="loginss">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Login" @*class="btn btn-default"*@ @*class="btn btn-dark"*@ class="btn @*btn-primary*@  btn-outline-success btn-lg btn-block" />
+                    </div>
+                </div>
+            </div>
+
+
+            <button type="button" class="btn btn-outline-success btn-lg btn-block"> @Html.ActionLink("Create Account", "SignUp", "Account", new { area = "" }, new { @class = "nav-link" }) </button>
+
+        </div>
+
+    </div>
+        }
+        <br />
+
+        
+       
+
+
+    </section>
+    </body>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

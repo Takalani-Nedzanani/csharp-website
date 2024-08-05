@@ -1,0 +1,235 @@
+﻿@model firebase1.Models.Comment
+
+@{
+    ViewBag.Title = "Comment";
+}
+
+  @*summernote*@ 
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+
+
+
+
+<style>
+
+    /* star ratings */
+    /** {
+        margin: 0;
+        padding: 0;
+    }*/
+
+    .rate {
+        /* align: center-right;*/
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-right: 300px;
+       /* margin-left: 100px;*/
+    }
+
+    .rate {
+        float: left;
+        height: 140px;
+        padding: 0 10px;
+        /*text-align: center;*/
+    }
+
+        .rate:not(:checked) > input {
+            position: absolute;
+            top: -9999px;
+        }
+
+        .rate:not(:checked) > label {
+            float: right;
+            width: 1em;
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 45px;
+            color:white;
+        }
+    /*#ccc*/
+    .rate:not(:checked) > label:before {
+        content: '★ ';
+    }
+
+        .rate > input:checked ~ label {
+            color: #ffc700;
+        }
+
+        .rate:not(:checked) > label:hover,
+        .rate:not(:checked) > label:hover ~ label {
+            color: #deb217;
+        }
+
+        .rate > input:checked + label:hover,
+        .rate > input:checked + label:hover ~ label,
+        .rate > input:checked ~ label:hover,
+        .rate > input:checked ~ label:hover ~ label,
+        .rate > label:hover ~ input:checked ~ label {
+            color: #c59b08;
+        }
+
+
+    .sectionCenter {
+        margin: auto;
+        width: 50%;
+        padding: 50px;
+        /* text-align: left;*/
+    }
+
+    .comment{
+        text-align:center;
+    }
+
+</style>
+
+
+
+
+
+
+
+
+
+<script>
+    var feild = document.querySelector('textarea');
+    var backUp = feild.getAttribute('placeholder');
+    var btn = document.querySelector('.btn');
+    var clear = document.getElementById('clear')
+
+    feild.onfocus = function () {
+        this.setAttribute('placeholder', '');
+        this.style.borderColor = '#333';
+        btn.style.display = 'block'
+    }
+
+    feild.onblur = function () {
+        this.setAttribute('placeholder', backUp);
+        this.style.borderColor = '#aaa'
+    }
+
+    clear.onclick = function () {
+        btn.style.display = 'none';
+        feild.value = '';
+    }
+
+</script>
+
+
+
+
+<body style="background-color: #6EAC80;">
+
+
+    <section class="sectionCenter">
+
+
+        <div class="rate">
+            <h2 style="color:#144135;">Rate our App</h2>
+            <input type="radio" id="star5" name="rate" value="5" />
+            <label for="star5" title="text">5 stars</label>
+            <input type="radio" id="star4" name="rate" value="4" />
+            <label for="star4" title="text">4 stars</label>
+            <input type="radio" id="star3" name="rate" value="3" />
+            <label for="star3" title="text">3 stars</label>
+            <input type="radio" id="star2" name="rate" value="2" />
+            <label for="star2" title="text">2 stars</label>
+            <input type="radio" id="star1" name="rate" value="1" />
+            <label for="star1" title="text">1 star</label>
+        </div>
+
+
+
+
+
+        <br />
+
+
+        
+
+        <h2 style="color:#144135; ">Send us a comment</h2>
+        <hr  style="color:white;"/>
+
+        @*<h2 style="color:forestgreen; ">Send us  Comment</h2>*@
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @*<hr />*@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Message,new { htmlAttributes = new { @class = "form-control",style = "Width:450px,Height:500%" } })
+                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group" hidden>
+                        @Html.LabelFor(model => model.ResponseMessage, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.ResponseMessage, new { htmlAttributes = new { @class = "form-control summernote" } })
+                            @Html.ValidationMessageFor(model => model.ResponseMessage, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                <br />
+
+                @*<div class="comment">*@
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Send us a Comment" @*class="btn btn-default"*@ @*class="btn btn-dark"*@ class="btn @*btn-primary*@  btn btn-success @*btn-outline-success*@ btn-lg btn-block" />
+                        </div>
+                    </div>
+                @*</div>*@
+
+            </div>
+        }
+
+
+
+
+
+
+
+
+    </section>
+</body>
+
+@section Scripts {
+
+    @*summernote*@
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.summernote').summernote({
+               
+            });
+        });
+
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+}
